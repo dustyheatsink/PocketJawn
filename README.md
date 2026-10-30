@@ -47,7 +47,13 @@ Keeping the D-pad mapped as regular keyboard keys, I flashed new firmware that e
 
 So now, when you press the L/R gamepad keys you can quickly cycle through the TTYs that load at boot running the various apps.
 
-
+# Things to do
+- Continue tweaking base font so ANSI menus render better.
+- Add additional RF based utilities, so it is even more useful in the field.
+- Package main menu system and clean it up.
+- Clean up splash screen and boot displays.
+- Test battery install and tweak system for power optimization.
+- Really nail down optimal CM4 carrier board. (Trying to avoid bumbling through rolling my own)
 
 ### License
 
