@@ -7,8 +7,8 @@ PocketTerm35 based Linux cyberdeck with a focus on MeshCore and Meshtastic integ
 </p>
 
 <p align="center">
-  <img src="images/Frontview.jpg" width="47%" alt="PocketJawn front view">
-  <img src="images/IMG_2221.gif" width="47%" alt="PocketJawn in action">
+  <img src="images/Frontview.jpg" width="49%" alt="PocketJawn front view">
+  <img src="images/IMG_2221.gif" width="45%" alt="PocketJawn in action">
 </p>
 
 # Original plan
