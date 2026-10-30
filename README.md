@@ -13,7 +13,7 @@ PocketTerm35 based Linux cyberdeck with a focus on MeshCore and Meshtastic integ
 
 # Original plan
 
-To make a hackable base device to run MeshTerm for MeshCore, something that could be modified while still using mostly off the shelf components, and not reinventing the wheel.
+To make a hackable base device to run MeshTerm or MeshCore, something that could be modified while still using mostly off the shelf components, and not reinventing the wheel.
 
 <p align="center">
   <img src="images/Angle.jpg" width="43%" alt="PocketJawn angled view">
