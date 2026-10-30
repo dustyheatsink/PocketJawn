@@ -6,9 +6,18 @@ PocketTerm35 based Linux cyberdeck with a focus on MeshCore and Meshtastic integ
   <img src="images/IMG_2193.gif" alt="PocketJawn terminal interface">
 </p>
 
+<p align="center">
+  <img src="images/Frontview.jpg" width="31%" alt="PocketJawn front view">
+</p>
+
 # Original plan
 
 To make a hackable base device to run MeshTerm for MeshCore, something that could be modified while still using mostly off the shelf components, and not reinventing the wheel.
+
+<p align="center">
+  <img src="images/Angle.jpg" width="31%" alt="PocketJawn angled view">
+  <img src="images/Sideshot.jpg" width="31%" alt="PocketJawn side view">
+</p>
 
 # Current iteration
 The base PocketTerm is designed to support a full-size Pi 4/5. However, I’m using a CM4 on a carrier board. The goal is to slim that stack down as much as possible and hopefully eliminate the extra case section in the back. I’ve also installed a WeHooper Zebra Duo HAT so that the device is running dual 1W E22P modules.
