@@ -45,3 +45,9 @@ Since there is the RP2040 under the hood, that opened up some options. After som
 Keeping the D-pad mapped as regular keyboard keys, I flashed new firmware that exposed the gamepad buttons as their own events. Then I set up a listener in Linux that takes the L/R button events and triggers the TTY switching logic.
 
 So now, when you press the L/R gamepad keys you can quickly cycle through the TTYs that load at boot running the various apps.
+
+
+
+### License
+
+Any original source code in this repository is licensed under the MIT License. Unless otherwise noted, photographs, graphics, logos, artwork, and other media are not licensed for reuse or redistribution without prior permission. Any third-party projects referenced retain their original licenses.
