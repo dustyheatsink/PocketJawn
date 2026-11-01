@@ -1,0 +1,11 @@
+[Unit]
+Description=PocketJawn Display Sleep
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/pocketjawn-display
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+# Handles TTY switching, also maps Select key as Esc.
+import glob
+import os
+import struct
+import subprocess
+from evdev import UInput, ecodes
+
+BTN_TL = 310
+BTN_TR = 311
+BTN_SELECT = 314
+
+def find_gamepad():
+    for event in glob.glob("/dev/input/event*"):
+        try:
+            name = open(f"/sys/class/input/{os.path.basename(event)}/device/name").read().strip()
+            if name == "pocketTerm35 pocketTerm35 Keyboard+Gamepad":
+                return event
+        except OSError:
+            pass
+    raise SystemExit("PocketTerm35 gamepad not found")
+
+def current_tty():
+    return int(subprocess.check_output(["fgconsole"], text=True).strip())
+
+device = find_gamepad()
+fmt = "llHHI"
+size = struct.calcsize(fmt)
+ui = UInput({ecodes.EV_KEY: [ecodes.KEY_ESC]}, name="PocketJawn Buttons")
+
+with open(device, "rb", buffering=0) as f:
+    while True:
+        data = f.read(size)
+        if len(data) != size:
+            continue
+
+        _, _, etype, code, value = struct.unpack(fmt, data)
+
+        if etype != 1 or value != 1:
+            continue
+
+        if code == BTN_SELECT:
+            ui.write(ecodes.EV_KEY, ecodes.KEY_ESC, 1)
+            ui.write(ecodes.EV_KEY, ecodes.KEY_ESC, 0)
+            ui.syn()
+            continue
+
+        tty = current_tty()
+        if tty not in (1, 2, 3):
+            continue
+
+        if code == BTN_TL:
+            subprocess.run(["chvt", str(3 if tty == 1 else tty - 1)])
+        elif code == BTN_TR:
+            subprocess.run(["chvt", str(1 if tty == 3 else tty + 1)])
