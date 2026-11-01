@@ -34,3 +34,58 @@ Uusing legacy framebuffer at 480x320.
 Add these options to existing `/boot/firmware/cmdline.txt`:
 
     fullscreen_logo=1 fullscreen_logo_name=logo.tga vt.global_cursor_default=0
+
+## Console and TTY setup
+
+Set console font in `/etc/default/console-setup`:
+
+    CHARMAP="UTF-8"
+    CODESET="guess"
+    FONTFACE="Terminus"
+    FONTSIZE="6x12"
+
+TTY layout:
+
+    TTY1 - PocketJawn launcher
+    TTY2 - MeshTerm
+    TTY3 - Termtastic
+    TTY4 - Normal login
+
+TTY1, TTY2 and TTY3 use autologin. TTY4 is left as a normal login shell.
+
+### Autologin
+
+Create a systemd override for TTY1, TTY2 and TTY3:
+
+    sudo systemctl edit getty@tty1
+    sudo systemctl edit getty@tty2
+    sudo systemctl edit getty@tty3
+
+Add:
+
+    [Service]
+    ExecStart=
+    ExecStart=-/sbin/agetty --autologin USERNAME --noclear %I $TERM
+
+Replace `USERNAME` with your  username.
+
+TTY4 is just a  normal login.
+
+### TTY apps
+
+Add to `~/.bash_profile`:
+
+    if [ "$(tty)" = "/dev/tty1" ]; then
+        cd "$HOME/pocketjawn-launcher" &&
+            exec /usr/bin/python3 "$HOME/pocketjawn-launcher/launcher.py"
+    fi
+
+    if [ "$(tty)" = "/dev/tty2" ]; then
+        exec "$HOME/meshterm"
+    fi
+
+    if [ "$(tty)" = "/dev/tty3" ]; then
+        exec "$HOME/termtastic"
+    fi
+
+MeshTerm and Termtastic need to be in home directory as `~/meshterm` and `~/termtastic`
