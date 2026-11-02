@@ -3,7 +3,7 @@
 PocketTerm35 based Linux cyberdeck with a focus on MeshCore and Meshtastic integration and TUI based apps.
 
 <p align="center">
-  <img src="images/IMG_2193.gif" alt="PocketJawn terminal interface">
+  <img src="images/pocketjawn.gif" alt="PocketJawn terminal interface">
 </p>
 
 <p align="center">
