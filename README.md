@@ -21,7 +21,7 @@ To make a hackable base device to run MeshTerm or MeshCore, something that could
 </p>
 
 # Current iteration
-The base PocketTerm is designed to support a full-size Pi 4/5. However, I’m using a CM4 on a carrier board. The goal is to slim that stack down as much as possible and hopefully eliminate the extra case section in the back. I’ve also installed a WeHooper Zebra Duo HAT so that the device is running dual 1W E22P modules.
+The base PocketTerm is designed to support a full-size Pi 4/5. However, I’m using a CM4 on a carrier board. The goal is to slim that stack down as much as possible and hopefully eliminate the extra case section in the back. I’ve also installed a [WeHooper Zebra Duo HAT](https://github.com/wehooper4/Meshtastic-Hardware/blob/main/ZebraHAT/duo/readme.md) so that the device is running dual 1W E22P modules.
 
 Initial case designs for a slimmer back are underway, but actual use of them waiting to see how slim I can make the hardware stack.
 
