@@ -6,6 +6,8 @@ Requires=console-setup.service
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/setfont -C /dev/tty1 /usr/local/share/pocketjawn-6x12-ansi.psf
+ExecStart=/usr/bin/setfont -C /dev/tty2 /usr/local/share/pocketjawn-6x12-ansi.psf
+ExecStart=/usr/bin/setfont -C /dev/tty3 /usr/local/share/pocketjawn-6x12-ansi.psf
 RemainAfterExit=yes
 
 [Install]
