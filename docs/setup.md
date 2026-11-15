@@ -89,3 +89,10 @@ Add to `~/.bash_profile`:
     fi
 
 MeshTerm and Termtastic need to be in home directory as `~/meshterm` and `~/termtastic`
+
+# MeshCore firmware flashing (mikecarper/meshfirmware)
+git clone https://github.com/mikecarper/meshfirmware.git ~/meshfirmware
+
+# MeshCore CLI
+sudo apt install pipx
+pipx install meshcore-cli
