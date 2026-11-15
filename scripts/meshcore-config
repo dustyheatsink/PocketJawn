@@ -1,0 +1,62 @@
+
+#!/usr/bin/env bash
+set -euo pipefail
+export PATH="$HOME/.local/bin:$PATH"
+
+# presets
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+CONFIG="$ROOT/configs"
+
+command -v meshcore-cli >/dev/null || {
+    echo "Missing meshcore-cli"
+    exit 1
+}
+
+echo "PhillyMesh Presets"
+echo "1) Repeater"
+echo "2) Companion"
+read -r -p "Select device: " choice
+
+case "$choice" in
+    1)
+        ROLE="Repeater"
+        FILE="repeater.txt"
+        FLAGS=(-r)
+        ;;
+    2)
+        ROLE="Companion"
+        FILE="companion.txt"
+        FLAGS=()
+        ;;
+    *)
+        echo "Invalid selection"
+        exit 1
+        ;;
+esac
+
+read -r -p "Serial port [/dev/ttyACM0]: " PORT
+PORT="${PORT:-/dev/ttyACM0}"
+
+[[ -e "$PORT" ]] || {
+    echo "Device not found: $PORT"
+    exit 1
+}
+
+[[ -s "$CONFIG/$FILE" ]] || {
+    echo "Missing or empty preset: $CONFIG/$FILE"
+    exit 1
+}
+
+echo
+echo "$ROLE preset:"
+cat "$CONFIG/$FILE"
+echo
+
+read -r -p "Apply settings? [y/N] " answer
+[[ "$answer" == [yY] ]] || exit 0
+
+cd "$CONFIG"
+meshcore-cli "${FLAGS[@]}" -s "$PORT" script "$FILE"
+
+echo
+echo "Done. Power cycle the device if needed."

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+TEAL=$'\033[36m'
+RESET=$'\033[0m'
+printf '%s' "$TEAL"
+trap 'printf "%s" "$RESET"' EXIT
+
+while true; do
+    clear
+    echo "MeshCore Tools"
+    echo
+    echo "1) Flash Firmware"
+    echo "2) Apply PhillyMesh Preset"
+    echo "3) Console"
+    echo "Q) Back"
+    echo
+
+    read -r -p "Select: " choice || exit
+
+    case "$choice" in
+        1) (cd "$HOME/meshfirmware" && bash ./mcfirmware.sh) ;;
+        2) bash "$ROOT/scripts/meshcore-config" ;;
+        3) bash --noprofile --norc ;;
+        [qQ]) exit 0 ;;
+        *) echo "Invalid selection" ;;
+    esac
+
+    echo
+    read -r -p "Press Enter to continue..." || exit
+done
