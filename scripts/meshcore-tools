@@ -1,6 +1,22 @@
 #!/usr/bin/env bash
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# Start MeshCore Tools inside tmux
+if [[ -z "${TMUX:-}" ]]; then
+    exec tmux -L pocketjawn \
+        -f /dev/null \
+        new-session -s meshcore-tools "$0"
+fi
+
+tmux() { command tmux -L pocketjawn "$@"; }
+tmux set-option status on
+tmux set-option status-position bottom
+tmux set-option status-style 'bg=colour6,fg=black'
+tmux set-option status-left ' POCKETJAWN '
+tmux set-option status-right ' ^B [ SCROLL  |  Q BACK '
+tmux set-option history-limit 10000
+
 TEAL=$'\033[36m'
 RESET=$'\033[0m'
 printf '%s' "$TEAL"
